@@ -11,3 +11,4 @@ add_executable(TicTacToe
     Game.h
     Board.h
 )
+target_compile_definitions(TicTacToe PRIVATE CI_MODE)
