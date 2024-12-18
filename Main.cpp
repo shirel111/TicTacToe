@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <iostream>
 #include <stdexcept>
+#define CI_MODE
 
 int main()
 {
@@ -18,9 +19,19 @@ int main()
 
             int move;
 
-            std::cout << "Player " << currentPlayer << ", enter your move (1-16): ";
+            #ifndef CI_MODE
 
-            std::cin >> move;
+               std::cout << "Player " << currentPlayer << ", enter your move (1-16): ";
+               
+               std::cin >> move;
+
+            #else
+
+               move = (i % 16) + 1;
+               
+               std::cout << "CI Player " << currentPlayer << " move: " << move << std::endl;
+            
+            #endif
 
             // Validate the move
             if (move < 1 || move > game.getBoard().getSize() * game.getBoard().getSize()) 
